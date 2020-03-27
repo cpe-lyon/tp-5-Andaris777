@@ -47,7 +47,13 @@ Il faut par la suite éditer le fichier/etc/default/isc-dhcp-serverafin de spéc
 
 Pour valider la configuration, il faut utiliser la commande *dhcpd -t*. Par la suite, il faut redémarrer le serveur avec la commande *systemctl restart isc-dhcp-server*.
 
+Commande :
 
+* *hostnamectl set-hostname client* => modifie le nom de la machine pour "client"
+
+**NB** (extrait du sujet) : Dans les versions récentes, Ubuntu installe d’oﬀice le paquet *cloud-init* lors de la configurationdu système. Ce paquet permet la configuration de machines via un script dans le cloud, et a parfois des effets de bord fâcheux; en particulier, il supprimera le nom qu’on vient de donner à notre **VM** au prochain redémarrage pour lui redonner son ancien nom. Pour éviter cela, créez le fichier */etc/cloud/cloud.cfg.d/99_hostname.cfg* dans lequel vous ajouterez simplement **preserve_hostname:true**
+
+* *tail -f /var/log/syslog* => aﬀiche de manière continue les dernières lignes du fichier de log du système
 
 
 
